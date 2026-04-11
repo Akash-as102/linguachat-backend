@@ -2,8 +2,6 @@ const prisma=require('../../lib/prisma')
 const fs = require("fs");
 const path = require("path");
 const { execSync } = require("child_process");
-const speech = require("@google-cloud/speech");
-const client = new speech.SpeechClient();
 const { speechClient } = require("../lib/googleCloud");
 const uploadToGCS =require('../lib/uploadToGCS')
 const ffmpeg = require("fluent-ffmpeg");
@@ -135,7 +133,7 @@ module.exports={
             },
             };
 
-            const [response] = await client.recognize(request);
+            const [response] = await speechClient.recognize(request);
 
             const transcription = response.results
             .map((r) => r.alternatives[0].transcript)
