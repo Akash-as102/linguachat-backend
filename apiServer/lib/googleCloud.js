@@ -1,9 +1,17 @@
 const { Storage } = require("@google-cloud/storage");
 const speech = require("@google-cloud/speech");
 
-// 🔥 Uses env variable automatically
-const storage = new Storage();
-const speechClient = new speech.SpeechClient();
+// ✅ parse credentials from env
+const credentials = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS);
+
+const storage = new Storage({
+  credentials,
+  projectId: credentials.project_id,
+});
+
+const speechClient = new speech.SpeechClient({
+  credentials,
+});
 
 const bucketName = "linguachat-audio";
 const bucket = storage.bucket(bucketName);
