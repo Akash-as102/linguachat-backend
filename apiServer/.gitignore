@@ -1,0 +1,7 @@
+node_modules
+# Keep environment variables out of version control
+.env
+
+/generated/prisma
+
+/lib/keys/linguachat-488404-aa0cfdbb9cd1.json
