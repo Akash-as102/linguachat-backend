@@ -11,6 +11,7 @@ export async function translate(text, target) {
         key: process.env.API_KEY
       }
     })
+    return res.data.data.translations[0].translatedText;
   } catch (error) {
     console.log("ERROR:", err.response?.data || err.message);
   }

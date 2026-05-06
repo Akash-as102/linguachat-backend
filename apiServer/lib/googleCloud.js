@@ -3,7 +3,6 @@ const speech = require("@google-cloud/speech");
 
 // ✅ parse credentials from env
 const credentials = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS);
-console.log(credentials);
 const storage = new Storage({
   credentials,
   projectId: credentials.project_id,
