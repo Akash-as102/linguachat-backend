@@ -13,7 +13,7 @@ export async function translate(text, target) {
     })
     return res.data.data.translations[0].translatedText;
   } catch (error) {
-    console.log("ERROR:", err.response?.data || err.message);
+    console.log("ERROR:", error.response?.data || err.message);
   }
   return res.data.data.translations[0].translatedText;
 }
