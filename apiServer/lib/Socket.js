@@ -124,7 +124,7 @@ module.exports=(io)=>{
                     translatedText=await translate(message.text,receiverLang)
                 }
                 const nonTranslated= {...message,status:"DELIVERED"}
-                const deliveredMessage={...message,text:translatedText,status:'DELIVERED'}
+                const deliveredMessage={...message,text:message.text,translatedText,status:'DELIVERED'}
                 io.to(receiverSocketId).emit("receiveMessage", deliveredMessage)
 
                 await prisma.message.update(
@@ -199,7 +199,7 @@ module.exports=(io)=>{
                 const receiverLang=onlineUsers.get(receiverId)[1]
                 const translatedText=await translate(message.text,receiverLang)
                 const nonTranslated= {...message,status:"DELIVERED"}
-                const deliveredMessage={...message,text:translatedText,status:'DELIVERED'}
+                const deliveredMessage={...message,text:message.text,translatedText,status:'DELIVERED'}
                 io.to(receiverSocketId).emit('receiveMessage',deliveredMessage);
                 await prisma.message.update({
                     where:{id:message.id},
