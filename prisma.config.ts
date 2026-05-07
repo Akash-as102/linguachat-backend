@@ -10,7 +10,7 @@ export default defineConfig({
   },
   engine: "classic",
   datasource: {
-    url: env("DATABASE_URL"),
-    directUrl: env("DIRECT_URL")
+    url: "postgresql://postgres.bwpggtgfitdedhjvyegb:4qrjVj0wPqkP1RqQ@aws-1-ap-south-1.pooler.supabase.com:6543/postgres?pgbouncer=true",
+    directUrl: "postgresql://postgres.bwpggtgfitdedhjvyegb:4qrjVj0wPqkP1RqQ@aws-1-ap-south-1.pooler.supabase.com:5432/postgres"
   },
 });
