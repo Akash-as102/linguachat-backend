@@ -130,7 +130,7 @@ module.exports=(io)=>{
                 await prisma.message.update(
                     {
                     where: { id: message.id },
-                    data: { status: "DELIVERED" }
+                    data: { status: "DELIVERED",translatedText }
                 })
 
                 socket.emit("receiveMessage", nonTranslated)
@@ -204,7 +204,8 @@ module.exports=(io)=>{
                 await prisma.message.update({
                     where:{id:message.id},
                     data:{
-                        status:"DELIVERED"
+                        status:"DELIVERED",
+                        translatedText
                     }
                 });
                 socket.emit('receiveMessage',nonTranslated)
